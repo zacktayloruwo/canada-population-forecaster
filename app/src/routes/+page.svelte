@@ -408,20 +408,9 @@
 					</div>
 				</div>
 
-				<div class="duo">
-					<div class="card">
-						<div class="card-head">
-							<h2>Age structure — {geogLabel}</h2>
-							<InfoDot topic="pyramid" />
-						</div>
-						<div class="legend">
-							<span><span class="sw outline"></span>{c.base_year} base year</span>
-							<span><span class="sw" style="background:var(--sce); block-size:10px"></span>Your scenario, {view.year}</span>
-						</div>
-						<Pyramid cohorts={c.cohorts} base={pyrBase} now={pyrNow} baseYear={c.base_year} year={view.year} />
-						<p class="chart-note">Men left, women right — % of total population per five-year cohort.</p>
-					</div>
-
+				{#if view.item === 'seats' || view.item === 'pctseats'}
+					<!-- The Commons card shows only for the two seat-count indicators;
+					     the age card covers everything else (incl. population per seat). -->
 					<div class="card">
 						<div class="card-head">
 							<h2>House of Commons, {view.year}</h2>
@@ -439,7 +428,27 @@
 							year={view.year}
 						/>
 					</div>
-				</div>
+				{:else}
+					<div class="card">
+						<div class="card-head">
+							<h2>Age structure — {geogLabel}</h2>
+							<InfoDot topic="pyramid" />
+						</div>
+						<div class="legend">
+							<span><span class="sw outline"></span>{c.base_year} (outline)</span>
+							<span><span class="sw" style="background:var(--seq2); block-size:10px"></span>Children 0–19</span>
+							<span><span class="sw" style="background:var(--seq4); block-size:10px"></span>Working age 20–64</span>
+							<span><span class="sw" style="background:var(--seq7); block-size:10px"></span>Seniors 65+</span>
+						</div>
+						<div class="pyr-wrap">
+							<Pyramid cohorts={c.cohorts} base={pyrBase} now={pyrNow} baseYear={c.base_year} year={view.year} />
+						</div>
+						<p class="chart-note">
+							Filled bars: your scenario in {view.year}. Dark outline: the {c.base_year} population.
+							Men left, women right — % of total population per five-year cohort.
+						</p>
+					</div>
+				{/if}
 			</main>
 		</div>
 	{:else}
@@ -492,14 +501,18 @@
 </div>
 
 <style>
-	/* Full-width map card: keep the drawing at a readable size, centred */
+	/* Full-width cards: keep the drawings at a readable size, centred */
 	.map-wrap {
 		max-width: 660px;
 		margin: 0 auto;
 	}
+	.pyr-wrap {
+		max-width: 540px;
+		margin: 0 auto;
+	}
 	.legend .outline {
 		background: none;
-		border: 1.3px solid var(--ink-2);
+		border: 1.5px solid var(--ink);
 		block-size: 8px;
 	}
 	.csv {
