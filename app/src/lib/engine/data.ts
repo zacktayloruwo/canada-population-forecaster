@@ -2,7 +2,7 @@
 // the browser loader. Tests feed the same shaping function rows read from
 // disk, so the Parquet round-trip itself is under test.
 
-import { parquetReadObjects, asyncBufferFromUrl } from 'hyparquet';
+import { parquetReadObjects } from 'hyparquet';
 import type { BaseFigs, Constants, GeogFigs } from './types';
 import type { PreparedData } from './forecast';
 import { calcFlowMat, calcOut } from './flows';
@@ -98,8 +98,18 @@ const emptyMat = () => Array.from({ length: 13 }, () => new Array<number>(13).fi
 
 /** Browser loader: fetch everything under `${base}/data/`. */
 export async function loadData(base: string): Promise<PreparedData> {
-	const parquet = async (name: string) =>
-		parquetReadObjects({ file: await asyncBufferFromUrl({ url: `${base}/data/${name}.parquet` }) });
+	// The files are tiny (~130 KB in total), so fetch each one whole instead of
+	// using hyparquet's range-request reader — some static hosts and CDNs
+	// (GitHub Pages among them) answer range requests in ways that corrupt the
+	// footer check.
+	const parquet = async (name: string) => {
+		const resp = await fetch(`${base}/data/${name}.parquet`);
+		if (!resp.ok) throw new Error(`${name}.parquet: HTTP ${resp.status}`);
+		const ab = await resp.arrayBuffer();
+		return parquetReadObjects({
+			file: { byteLength: ab.byteLength, slice: (s: number, e?: number) => ab.slice(s, e) }
+		});
+	};
 	const [constants, baseFigs, domMove, imFlows, historical, scenarioMats] = await Promise.all([
 		fetch(`${base}/data/constants.json`).then((r) => r.json()),
 		parquet('base_figs'),
