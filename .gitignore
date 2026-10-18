@@ -1,0 +1,14 @@
+.DS_Store
+Icon?
+node_modules/
+app/.svelte-kit/
+app/build/
+# The R package is its own repository (zacktayloruwo/forecasterGolem)
+forecaster_golem/
+.Rproj.user/
+.Rhistory
+.RData
+.Rapp.history
+_old/
+*.tar.gz
+.claude/settings.local.json

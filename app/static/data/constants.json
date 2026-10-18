@@ -1,0 +1,21 @@
+{
+  "base_year": 2021,
+  "forecast_years": [2021, 2026, 2031, 2036, 2041, 2046, 2051, 2056, 2061, 2066, 2071],
+  "default_immig_pct": 0.945,
+  "geogs": ["Canada", "Newfoundland and Labrador", "Prince Edward Island", "Nova Scotia", "New Brunswick", "Quebec", "Ontario", "Manitoba", "Saskatchewan", "Alberta", "British Columbia", "Northwest Territories", "Nunavut", "Yukon"],
+  "cohorts": ["0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85+"],
+  "settle_cma_pct": {
+    "2006-2011": 64.8249379364322,
+    "2011-2016": 57.5741968231219,
+    "2016-2021": 57.0632296247166
+  },
+  "base_national_pop": 38239864,
+  "eq_2021": 121891,
+  "seats_2021": [7, 4, 11, 10, 78, 122, 14, 14, 37, 43, 1, 1, 1],
+  "senate_floors": [6, 4, 10, 10, 24, 24, 6, 6, 6, 6],
+  "ref_periods": {
+    "2006-2011": [2006, 2011],
+    "2011-2016": [2011, 2016],
+    "2016-2021": [2016, 2021]
+  }
+}
