@@ -391,6 +391,23 @@
 					/>
 				</div>
 
+				<div class="card">
+					<div class="card-head">
+						<h2>{INDICATOR_LABELS[view.item]}, {view.year}</h2>
+						<InfoDot topic="map" />
+						<div class="right">
+							<select aria-label="Map display mode" bind:value={view.mapMode}>
+								<option value="abs">Absolute value</option>
+								<option value="chg">Change since {c.base_year}</option>
+								<option value="vsref">vs. current trends</option>
+							</select>
+						</div>
+					</div>
+					<div class="map-wrap">
+						<HexMap item={view.item} mode={view.mapMode} provs={mapProvs} year={view.year} onSelect={(i) => (view.geog = i + 1)} />
+					</div>
+				</div>
+
 				<div class="duo">
 					<div class="card">
 						<div class="card-head">
@@ -407,36 +424,21 @@
 
 					<div class="card">
 						<div class="card-head">
-							<h2>{INDICATOR_LABELS[view.item]}, {view.year}</h2>
-							<InfoDot topic="map" />
-							<div class="right">
-								<select aria-label="Map display mode" bind:value={view.mapMode}>
-									<option value="abs">Absolute value</option>
-									<option value="chg">Change since {c.base_year}</option>
-									<option value="vsref">vs. current trends</option>
-								</select>
+							<h2>House of Commons, {view.year}</h2>
+							<InfoDot topic="seatrules" />
+							<div class="right" style="font-size:0.85rem; color:var(--ink-2)">
+								{seatsTotalNow} seats ({seatsTotalNow >= seatsTotalBase ? '+' : ''}{seatsTotalNow - seatsTotalBase} vs {c.base_year})
 							</div>
 						</div>
-						<HexMap item={view.item} mode={view.mapMode} provs={mapProvs} year={view.year} onSelect={(i) => (view.geog = i + 1)} />
+						<SeatsChart
+							abbrs={GEOG_SHORT.slice(1)}
+							names={c.geogs.slice(1)}
+							base={seatsBase}
+							now={seatsNow}
+							baseYear={c.base_year}
+							year={view.year}
+						/>
 					</div>
-				</div>
-
-				<div class="card">
-					<div class="card-head">
-						<h2>House of Commons, {view.year}</h2>
-						<InfoDot topic="seatrules" />
-						<div class="right" style="font-size:0.85rem; color:var(--ink-2)">
-							{seatsTotalNow} seats ({seatsTotalNow >= seatsTotalBase ? '+' : ''}{seatsTotalNow - seatsTotalBase} vs {c.base_year})
-						</div>
-					</div>
-					<SeatsChart
-						abbrs={GEOG_SHORT.slice(1)}
-						names={c.geogs.slice(1)}
-						base={seatsBase}
-						now={seatsNow}
-						baseYear={c.base_year}
-						year={view.year}
-					/>
 				</div>
 			</main>
 		</div>
@@ -490,6 +492,11 @@
 </div>
 
 <style>
+	/* Full-width map card: keep the drawing at a readable size, centred */
+	.map-wrap {
+		max-width: 660px;
+		margin: 0 auto;
+	}
 	.legend .outline {
 		background: none;
 		border: 1.3px solid var(--ink-2);
