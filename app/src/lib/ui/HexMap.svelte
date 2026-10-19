@@ -27,7 +27,7 @@
 	// Pointy-top hexes, odd rows offset half a cell, roughly geographic.
 	const HR = 42;
 	const HW = (Math.sqrt(3) / 2) * HR;
-	const W = 4 + 2 * HW * 7.5;
+	const W = 4 + 2 * HW * 8.5; // widest effective column is NL at 7.5
 	const H = 4 + 2 * HR + 3 * HR;
 	function hexPts(cx: number, cy: number): string {
 		const p: string[] = [];
