@@ -15,6 +15,7 @@
 	import Pyramid from '$lib/ui/Pyramid.svelte';
 	import HexMap from '$lib/ui/HexMap.svelte';
 	import SeatsChart from '$lib/ui/SeatsChart.svelte';
+	import DataMethods from '$lib/ui/DataMethods.svelte';
 
 	type MapMode = 'abs' | 'chg' | 'vsref';
 
@@ -452,46 +453,7 @@
 			</main>
 		</div>
 	{:else}
-		<div class="card prose">
-			<h2 style="margin-top:4px">How the forecast works</h2>
-			<p>
-				The forecaster uses the <b>cohort-component method</b>, the standard technique used by Statistics
-				Canada and national statistical agencies worldwide. The 2021 Census population of each province,
-				split into 36 age–sex cohorts, is advanced in five-year steps: each cohort is survived forward
-				using age-specific mortality, births are generated from age-specific fertility, and international
-				immigrants and interprovincial migrants are added or removed. House of Commons seats are then
-				reallocated each decade using the real constitutional formula (electoral quotient, senatorial
-				clause, and the post-2022 grandfather clause).
-			</p>
-			<p>Everything runs in your browser — no server, and nothing you do here is recorded.</p>
-
-			<h2>Data sources</h2>
-			<div class="tbl-wrap">
-				<table class="data">
-					<thead>
-						<tr><th>Component</th><th>Source</th><th>Role in the model</th></tr>
-					</thead>
-					<tbody>
-						<tr><td>Base population</td><td>2021 Census of Population; StatCan annual demographic estimates</td><td>Starting stock for every province × age × sex cohort</td></tr>
-						<tr><td>Fertility</td><td>StatCan Table 13-10-0418 — crude birth rate and fertility rates by province</td><td>Births added to the 0–4 cohorts each step; scaled by your fertility setting</td></tr>
-						<tr><td>Mortality</td><td>StatCan Life Tables, 2015–2017 (84-537-X)</td><td>Survival probabilities by age and sex; scaled by your mortality setting</td></tr>
-						<tr><td>International migration</td><td>StatCan Table 17-10-0014 — immigration by age and sex</td><td>Age–sex profile of newcomers; the level is set by your immigration slider</td></tr>
-						<tr><td>Settlement pattern</td><td>StatCan Table 17-10-0149 — immigrant settlement by CMA</td><td>Share of newcomers settling in Toronto, Montréal and Vancouver</td></tr>
-						<tr><td>Interprovincial migration</td><td>StatCan Tables 17-10-0015 and 17-10-0022 — flows by age, sex, origin and destination</td><td>Origin–destination flow matrix behind each internal-migration scenario</td></tr>
-						<tr><td>Foreign-born stock</td><td>2016 Census, population by immigrant status, province, age and sex</td><td>Baseline for the % foreign-born indicator</td></tr>
-						<tr><td>Seat allocation</td><td>Constitution Act, 1867 ss. 51–52; Preserving Provincial Representation Act (2022); Elections Canada quotients</td><td>Decennial redistribution of Commons seats</td></tr>
-					</tbody>
-				</table>
-			</div>
-
-			<h2>What the forecast is — and is not</h2>
-			<p>
-				A forecast like this is a <b>conditional projection</b>: it shows what would happen <i>if</i> the
-				rates you chose held for fifty years. It is not a prediction. Small annual differences compound —
-				a quarter-point change in the immigration rate moves the 2071 population by millions — which is
-				exactly why exploring scenarios side by side is more informative than any single number.
-			</p>
-		</div>
+		<DataMethods />
 	{/if}
 
 	<footer class="app">
