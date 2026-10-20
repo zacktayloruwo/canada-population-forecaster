@@ -21,10 +21,10 @@
 			'<a target="_blank" rel="noopener" href="http'
 		);
 
-	const middle = [methods, changes, sources, population, fertilityMortality, migration, seats];
+	const middle = [methods, changes, population, fertilityMortality, migration, seats];
 </script>
 
-<div class="card prose">{@html md(intro)}</div>
+<div class="card prose wide">{@html md(intro)}</div>
 
 <div class="md-grid">
 	{#each middle as section, i (i)}
@@ -32,7 +32,11 @@
 	{/each}
 </div>
 
-<div class="card prose">{@html md(disclaimer)}</div>
+<!-- Sources is a table, which cannot flow across CSS columns, so it takes the
+     full-width slot without the two-column treatment. -->
+<div class="card prose">{@html md(sources)}</div>
+
+<div class="card prose wide">{@html md(disclaimer)}</div>
 
 <style>
 	.md-grid {

@@ -349,6 +349,19 @@ svg text {
 	font-size: 1.05rem;
 	margin: 0 0 6px;
 }
+/* Full-width text cards: heading spans, body flows in two columns */
+.prose.wide {
+	column-count: 2;
+	column-gap: 28px;
+}
+.prose.wide h2 {
+	column-span: all;
+}
+@media (max-width: 1020px) {
+	.prose.wide {
+		column-count: 1;
+	}
+}
 .prose h3 {
 	font-size: 0.95rem;
 	margin: 14px 0 4px;

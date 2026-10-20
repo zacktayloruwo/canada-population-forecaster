@@ -10,5 +10,3 @@ The core of the app is a **cohort-component model**: the national and provincial
 6. Separately, for the % foreign-born indicator, net international migration is added to the previous period's foreign-born stock and mortality (but not fertility) is applied — children born in Canada to immigrant parents are not themselves foreign born.
 
 The **current trends** scenario holds your selected reference period's age-specific fertility and mortality rates constant, admits immigrants at a fixed policy-target rate of 0.945% of the national population per year with the reference period's age, sex, and settlement profile, and keeps interprovincial flows proportional to each origin's population. Your scenario starts from exactly these settings, so the two lines coincide until you move something.
-
-Everything runs in your browser — no server, and nothing you do here is recorded.
