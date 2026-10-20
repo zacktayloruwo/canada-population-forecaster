@@ -1,0 +1,5 @@
+## What this tool is
+
+The Canada Population Forecaster is a **teaching tool** created by Dr. Zack Taylor and Dr. Dave Armstrong (University of Western Ontario) to imagine future policy pressures associated with demographic and economic change. It presents a range of possible futures, letting you investigate the long-term impacts of hypothetical changes to fertility, mortality, and international and interprovincial migration — and how those changes shift the balance of provincial and territorial representation in the House of Commons.
+
+Its underlying assumptions are deliberately simplified, and some are more realistic than others (each is spelled out below). While calculated differently, the "current trends" outputs are similar to Statistics Canada's own long-term projections. For forecasts based on more sophisticated assumptions, see Statistics Canada's [*Population Projections for Canada, Provinces and Territories*](https://www150.statcan.gc.ca/n1/pub/91-520-x/91-520-x2019001-eng.htm) and the [current projection tables](https://www150.statcan.gc.ca/n1/en/catalogue/17200003).

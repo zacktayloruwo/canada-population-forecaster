@@ -345,16 +345,46 @@ svg text {
 	min-width: 46px;
 	text-align: right;
 }
-.prose {
-	max-width: 70ch;
-}
 .prose h2 {
 	font-size: 1.05rem;
-	margin: 18px 0 6px;
+	margin: 0 0 6px;
+}
+.prose h3 {
+	font-size: 0.95rem;
+	margin: 14px 0 4px;
 }
 .prose p,
 .prose li {
 	color: var(--ink-2);
+	max-width: 70ch;
+}
+.prose li {
+	margin-bottom: 6px;
+}
+.prose a {
+	color: var(--ref);
+}
+/* Markdown-rendered tables (Data & methods cards) */
+.prose table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 0.86rem;
+}
+.prose table th,
+.prose table td {
+	text-align: left;
+	padding: 7px 10px;
+	border-bottom: 1px solid var(--grid);
+	vertical-align: top;
+}
+.prose table th {
+	font-size: 0.74rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--ink-2);
+}
+.prose table td:first-child {
+	font-weight: 600;
 }
 table.data {
 	border-collapse: collapse;

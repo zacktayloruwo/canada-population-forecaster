@@ -21,6 +21,7 @@
     "vitest": "^3.0.4"
   },
   "dependencies": {
-    "hyparquet": "^1.8.0"
+    "hyparquet": "^1.8.0",
+    "marked": "^15.0.12"
   }
 }
