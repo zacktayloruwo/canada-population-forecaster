@@ -456,10 +456,6 @@
 		<DataMethods />
 	{/if}
 
-	<footer class="app">
-		© 2026 Zack Taylor and Dave Armstrong, University of Western Ontario. Version 3.0 —
-		browser-native edition; the model runs entirely on this page.
-	</footer>
 </div>
 
 <style>
